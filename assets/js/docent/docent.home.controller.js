@@ -62,6 +62,26 @@ const takeAPhoto = () => {
   camera.powerOff();
 };
 
+//registrar incidencias
+// /incidences/save
+/*
+{
+title,
+description,
+type,
+status,
+incidenceDate //yyyy-MM-dd hh:mm:ss
+annexes :[
+  {
+    name:"",
+    mimeType:"png",
+    file:""
+  }
+]
+location 
+}
+*/
+
 const getAllIncidencesByEmployee = async () => {
   try {
     const table = $("#incidencesTable").DataTable();

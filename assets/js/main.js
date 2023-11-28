@@ -91,7 +91,7 @@ const changeView = (role) => {
     case 'ENCARGADO':
       window.location.href = '/pages/attendant/home.html';
       break;
-    case 'DOCENTE':
+    case 'EMPLEADO':
       window.location.href = '/pages/docent/home.html';
       break;
     default:

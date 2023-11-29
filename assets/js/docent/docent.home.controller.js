@@ -81,7 +81,28 @@ annexes :[
 location 
 }
 */
+function submitIncidenceForm(event) {
+  event.preventDefault();
 
+  getCurrentLocation();
+
+  payload.title = document.getElementById("title").value;
+  payload.type = document.getElementById("type").value;
+  payload.description = document.getElementById("description").value;
+  payload.incidenceDate = document.getElementById("incidenceDate").value;
+
+  payload.userId = jwtDecode(localStorage.getItem("jwt")).areas[0].id;
+
+  for (let annex of payload.annexes) {
+    annex.name = new Date().toISOString();
+    annex.mimeType = "png";
+  }
+
+  axiosClient
+    .post("/incidences/save", payload)
+    .then((response) => console.log(response.data))
+    .catch((error) => console.error("Error:", error));
+}
 const getAllIncidencesByEmployee = async () => {
   try {
     const table = $("#incidencesTable").DataTable();
